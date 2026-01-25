@@ -22,7 +22,7 @@ const User = () => {
 
       try {
         const responseData = await sendRequest(
-          `${import.meta.env.VITE_BACKEND_URL}/user/me`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/user/me`,
           "GET",
           null,
           { Authorization: "Bearer " + auth.token },

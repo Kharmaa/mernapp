@@ -47,7 +47,7 @@ const Profile = () => {
 
       <div className="dashboard-grid">
         <div className="dashboard-column">
-          <User workoutsCount={workouts} />
+          <User />
         </div>
 
         <div className="dashboard-column">
