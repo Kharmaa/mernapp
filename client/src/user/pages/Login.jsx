@@ -55,6 +55,7 @@ const Login = () => {
       ? `${base}/api/user/login`
       : `${base}/api/user/signup`;
 
+    console.log("LOGIN URL:", url);
     const payload = isLoginMode
       ? {
           email: formState.inputs.email.value,
