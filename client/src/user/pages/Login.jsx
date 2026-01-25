@@ -49,9 +49,11 @@ const Login = () => {
   const loginHandler = async (event) => {
     event.preventDefault();
 
+    const base = import.meta.env.VITE_BACKEND_URL;
+
     const url = isLoginMode
-      ? `${import.meta.env.VITE_BACKEND_URL}/user/login`
-      : `${import.meta.env.VITE_BACKEND_URL}/user/signup`;
+      ? `${base}/api/user/login`
+      : `${base}/api/user/signup`;
 
     const payload = isLoginMode
       ? {
