@@ -1,0 +1,137 @@
+.weekpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-family: "Antonio", system-ui, sans-serif;
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.weekpanel__today {
+  font-size: 0.8rem;
+  opacity: 1;
+  color: #9ce6e7;
+  text-shadow: 0 2px 8px rgb(53, 53, 53);
+}
+
+.weekpanel__today span {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgb(53, 53, 53);
+}
+
+.weekpanel__week {
+  border: 1px solid rgba(215, 215, 215, 0.9);
+  backdrop-filter: blur(2px);
+  background-image: linear-gradient(
+    to right,
+    #9ce6e7 0%,
+    #d8f3ffb4 51%,
+    #9ce6e7 100%
+  );
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 1px;
+  color: rgb(0, 0, 0);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 8px rgba(23, 23, 23, 0.1);
+}
+
+.weekpanel__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.weekpanel__weekdays {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.weekpanel__day {
+  border: none;
+  background: transparent;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border-radius: 8px;
+  background-color: #a1a1a178;
+  box-shadow: 0 2px 5px #00000077;
+}
+
+.weekpanel__day__active {
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px #cacaca;
+}
+
+.weekpanel__day__today {
+  box-shadow: 0 2px 5px #000000;
+  border-radius: 8px;
+  background-color: #d4f579ce;
+  color: black;
+}
+
+.weekpanel__mark {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: block;
+}
+
+.weekpanel__mark__yes {
+  background-color: #c4f249;
+  border: 2px solid #43541a70;
+}
+
+.weekpanel__mark__no {
+  background-color: #e53935;
+  border: 2px solid #63171557;
+}
+
+.weekpanel__label {
+  font-size: 0.75rem;
+  letter-spacing: 0.14rem;
+}
+
+.weekswitch {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.weekswitch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+}
+
+.weekswitch__prev::before {
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 16px solid #ddfe83;
+}
+
+.weekswitch__next::before {
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 16px solid #ddfe83;
+}
+
+@media (max-width: 767px) {
+  .weekpanel__weekdays {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+}

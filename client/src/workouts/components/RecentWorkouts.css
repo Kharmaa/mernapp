@@ -1,0 +1,66 @@
+.recent__empty {
+  margin: 0;
+  opacity: 0.75;
+}
+
+.recent__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.recent__li {
+  margin: 0;
+}
+
+.recent__item {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(205, 205, 205, 0.911);
+  border-radius: 5px;
+  padding: 0.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  cursor: pointer;
+  text-align: left;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.recent__item:hover {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #98989882;
+  cursor: pointer;
+  background: #c5f249c8;
+  gap: 10px;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.recent__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.recent__date {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  color: #4e4e4e;
+}
+
+.recent__type {
+  font-weight: 700;
+}
+
+.recent__duration {
+  opacity: 0.85;
+}

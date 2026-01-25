@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
+
+.dashboard-card {
+  background-color: rgba(222, 222, 222, 0.79);
+  backdrop-filter: blur(5px);
+  border-radius: 2px;
+  border: 1px solid rgba(215, 215, 215, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow: hidden;
+  font-family: "Saira", sans-serif;
+  box-shadow: 0 4px 8px rgba(23, 23, 23, 0.6);
+}
+
+.dashboard-card__header {
+  padding: 0.4rem 1rem;
+  border-bottom: 1px solid rgba(73, 24, 101, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(
+    to right,
+    #9ce6e7 0%,
+    #d8f3ffb4 51%,
+    #9ce6e7 100%
+  );
+}
+
+.dashboard-card__header-right {
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  text-shadow: 0 0px 4px #a1c4fd;
+}
+
+.dashboard-card__content {
+  flex: 1;
+  padding: 0.5rem 1rem;
+}
+
+.form-workout-card {
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .form-workout-card {
+    width: 100%;
+  }
+}

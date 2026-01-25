@@ -1,0 +1,47 @@
+.workoutitem {
+  display: flex;
+  flex-direction: column;
+}
+
+.workoutitem__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.workoutitem__type {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.workoutitem__duration {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.workoutitem__row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #333;
+  padding: 0.25rem 0;
+}
+
+.workoutitem__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.workoutitem__value {
+  font-size: 0.85rem;
+}
+
+.workoutitem__desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.82rem;
+  opacity: 0.85;
+  line-height: 1.35;
+}

@@ -1,0 +1,149 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: rgb(73, 24, 101);
+}
+
+a.btn {
+  text-decoration: none;
+}
+
+.btn--sm {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.7rem;
+}
+
+.btn--md {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.75rem;
+}
+
+.btn--lg {
+  padding: 0.8rem 1.6rem;
+  font-size: 0.85rem;
+}
+
+.btn--primary {
+  background: #c5f249a0;
+  color: #000;
+  border: 2px solid #c4f249;
+  font-weight: 800;
+  box-shadow: 0 1px 4px black;
+}
+
+.btn--primary:hover {
+  background: transparent;
+  color: #000000;
+}
+
+.btn--secondary {
+  color: #c4f249;
+  background-color: #000;
+  border: 1px solid #c4f249;
+}
+
+.btn--secondary:hover {
+  background: #c4f249;
+  color: #000;
+}
+
+.btn--ghost {
+  background: transparent;
+  border: none;
+  color: #f24949;
+  padding: 0;
+  font-weight: 800;
+}
+
+.btn--ghost:hover {
+  text-decoration: underline;
+}
+.btn--edit {
+  background-image: linear-gradient(
+    to right,
+    #839452 0%,
+    #c4f249 51%,
+    #839452 100%
+  );
+  color: #000000;
+  font-weight: 600;
+  border: 2px solid #c4f249;
+}
+
+.btn--edit:hover {
+  background-position: right center;
+  color: #454545;
+}
+
+.btn--gradient {
+  background-image: linear-gradient(
+    to right,
+    #a1c4fd 0%,
+    #c2e9fb 51%,
+    #a1c4fd 100%
+  );
+  color: #000000;
+  font-weight: 600;
+  border: 1px solid rgba(87, 87, 87, 0.532);
+}
+
+.btn--gradient:hover {
+  background-position: right center;
+}
+
+.btn--gradient-green {
+  background-image: linear-gradient(
+    to right,
+    #839452 0%,
+    #c4f249 51%,
+    #839452 100%
+  );
+  color: #000000;
+  font-weight: 600;
+}
+
+.btn--gradient-green:hover {
+  background-position: right center;
+}
+
+.btn--danger {
+  background-image: linear-gradient(
+    to right,
+    #fcb69f 0%,
+    #ff5252 51%,
+    #ff5252 100%
+  );
+  border: 1px solid #ff9d9d;
+  color: #5e0000;
+  font-weight: 500;
+}
+
+.btn--danger:hover {
+  color: #000;
+  background-position: right center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.footer_btns {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 10px;
+}

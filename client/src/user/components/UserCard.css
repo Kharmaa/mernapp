@@ -1,0 +1,63 @@
+.user-card {
+  width: 100%;
+}
+
+.user-card__content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1rem;
+  border-radius: 14px;
+
+  box-sizing: border-box;
+}
+
+.user-card__image {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex: 0 0 auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.user-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.user-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.user-card__info h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+
+.user-card__info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(39, 39, 39, 0.7);
+}
+
+/* mobiilissa vähän tiiviimpi */
+@media (max-width: 767px) {
+  .user-card__content {
+    padding: 0.85rem;
+  }
+
+  .user-card__image {
+    width: 56px;
+    height: 56px;
+  }
+}

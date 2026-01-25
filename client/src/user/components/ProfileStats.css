@@ -1,0 +1,24 @@
+.stats__row {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.6rem 0;
+}
+
+.stats__title {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.stats__values {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.stats__values span {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}

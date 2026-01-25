@@ -1,0 +1,33 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #07060d;
+
+  background-image: url("./assets/bg-1.webp");
+  /* background-color: #bcbcbc; */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+hr {
+  border-color: #d4d4d4;
+}
+
+@media (max-width: 1440px) {
+  html,
+  body {
+    background-size: cover;
+  }
+}

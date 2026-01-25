@@ -1,0 +1,44 @@
+.mobile-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+
+  height: 100vh;
+  width: 70%;
+  background: rgba(0, 0, 0, 0.8);
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.mobile-nav--open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.mobile-nav .nav-links {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  width: 100%;
+
+  list-style: none;
+  margin-top: 20%;
+  padding: 0;
+}
+
+.mobile-nav .nav-links a {
+  display: inline-block;
+  padding: 0.5rem 0;
+}
+
+.mobile-nav .nav-links a {
+  color: white;
+}
+
+.mobile-nav .nav-links a::after {
+  background-color: #9ce6e7;
+}

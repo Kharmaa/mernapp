@@ -1,0 +1,78 @@
+.workout-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.workout-list__item {
+  width: calc(100% - 1.5rem);
+  max-width: 420px;
+  margin: 0.75rem auto;
+
+  opacity: 0;
+  transform: translateY(-16px);
+  animation: dropIn 420ms ease forwards;
+}
+
+.dashboard-card.workout-item-card .dashboard-card__header {
+  background-image: linear-gradient(
+    to right,
+    #a1fdaf 0%,
+    #c2e9fbb4 51%,
+    #a1fdaf 100%
+  );
+  padding: 0.4rem;
+}
+
+.dashboard-card.workout-item-card {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: none;
+  background: rgba(207, 207, 207, 0.9);
+}
+
+.dashboard-card.workout-list-card {
+  background-image: url("");
+  background-size: cover;
+}
+
+.workout-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+.workout-list__item:nth-child(1) {
+  animation-delay: 0ms;
+}
+.workout-list__item:nth-child(2) {
+  animation-delay: 70ms;
+}
+.workout-list__item:nth-child(3) {
+  animation-delay: 140ms;
+}
+.workout-list__item:nth-child(4) {
+  animation-delay: 210ms;
+}
+.workout-list__item:nth-child(5) {
+  animation-delay: 280ms;
+}
+.workout-list__item:nth-child(6) {
+  animation-delay: 350ms;
+}
+
+@keyframes dropIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workout-list__item {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
