@@ -52,7 +52,7 @@ const NewWorkout = () => {
       if (duration !== null) body.duration = duration;
 
       await sendRequest(
-        `${import.meta.env.VITE_BACKEND_URL}/workouts`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/workouts`,
         "POST",
         JSON.stringify(body),
         {

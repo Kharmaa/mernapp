@@ -28,7 +28,7 @@ const Home = () => {
     const fetchWorkouts = async () => {
       try {
         const data = await sendRequest(
-          `${import.meta.env.VITE_BACKEND_URL}/workouts/user/${auth.userId}`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/workouts/user/${auth.userId}`,
           "GET",
           null,
           { Authorization: "Bearer " + auth.token },
@@ -65,7 +65,7 @@ const Home = () => {
   const handleDeleteWorkout = async (workoutId) => {
     try {
       await sendRequest(
-        `${import.meta.env.VITE_BACKEND_URL}/workouts/${workoutId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/workouts/${workoutId}`,
         "DELETE",
         null,
         { Authorization: "Bearer " + auth.token },

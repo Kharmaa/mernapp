@@ -51,7 +51,7 @@ const UpdateWorkout = () => {
     const fetchWorkout = async () => {
       try {
         const responseData = await sendRequest(
-          `${import.meta.env.VITE_BACKEND_URL}/workouts/${workoutId}`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/workouts/${workoutId}`,
           "GET",
           null,
           { Authorization: "Bearer " + auth.token },
@@ -93,7 +93,7 @@ const UpdateWorkout = () => {
 
     try {
       await sendRequest(
-        `${import.meta.env.VITE_BACKEND_URL}/workouts/${workoutId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/workouts/${workoutId}`,
         "PATCH",
         JSON.stringify({
           date: formState.inputs.date.value,
