@@ -173,3 +173,5 @@ VITE_BACKEND_URL=https://mernapp-backend-tbx6.onrender.com
 ## Contact
 
 This project was built for learning and portfolio purposes.
+
+---
