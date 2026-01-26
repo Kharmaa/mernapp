@@ -119,9 +119,9 @@ mernapp/
 
 ### Backend(server)
 
-MONGODB_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-NODE_ENV=production
+- MONGODB_URI=your_mongodb_uri
+- JWT_SECRET=your_jwt_secret
+- NODE_ENV=production
 
 ### Frontend(client)
 
@@ -133,23 +133,23 @@ VITE_BACKEND_URL=https://mernapp-backend-tbx6.onrender.com
 
 #### Clone repository
 
-git clone https://github.com/yourusername/mernapp.git
-cd mernapp
+- git clone https://github.com/yourusername/mernapp.git
+- cd mernapp
 
 #### Backend
 
-cd server
-npm install
-npm run dev
+- cd server
+- npm install
+- npm run dev
 
 #### Frontend
 
-cd client
-npm install
-npm run dev
+- cd client
+- npm install
+- npm run dev
 
-Frontend: http://localhost:5173
-Backend: http://localhost:5000
+- Frontend: http://localhost:5173
+- Backend: http://localhost:5000
 
 ---
 
@@ -157,16 +157,16 @@ Backend: http://localhost:5000
 
 #### Auth
 
-POST /api/user/signup
-POST /api/user/login
-GET /api/user/me
+- POST /api/user/signup
+- POST /api/user/login
+- GET /api/user/me
 
 #### Workouts
 
-GET /api/workouts/user/:uid
-POST /api/workouts
-PATCH /api/workouts/:wid
-DELETE /api/workouts/:wid
+- GET /api/workouts/user/:uid
+- POST /api/workouts
+- PATCH /api/workouts/:wid
+- DELETE /api/workouts/:wid
 
 ---
 
