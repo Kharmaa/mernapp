@@ -133,7 +133,7 @@ VITE_BACKEND_URL=https://mernapp-backend-tbx6.onrender.com
 
 #### Clone repository
 
-- git clone https://github.com/yourusername/mernapp.git
+- git clone https://github.com/Kharmaa/mernapp.git
 - cd mernapp
 
 #### Backend
