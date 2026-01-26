@@ -2,7 +2,11 @@ export const legalTexts = {
   contact: {
     title: "Ota Yhteyttä",
     content: `
-Ota yhteyttä:
+Tämä sovellus on kehitetty oppimistarkoituksessa.
+
+Jos sinuklla on palautetta tai kysyttävää projektista, ota rohkeasti yhteyttä:
+
+Riikka@sposti.fi
 
 `,
   },
