@@ -17,8 +17,18 @@ app.use((req, res, next) => {
 });
 
 //CORS MIDDLEWARE
+const allowedOrigins = [
+  "https://mernapp-umber.vercel.app",
+  "http://localhost:5173",
+];
+
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization",
