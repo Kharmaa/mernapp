@@ -4,7 +4,7 @@ export const legalTexts = {
     content: `
 Tämä sovellus on kehitetty oppimistarkoituksessa.
 
-Jos sinuklla on palautetta tai kysyttävää projektista, ota rohkeasti yhteyttä:
+Jos sinulla on palautetta tai kysyttävää projektista, ota rohkeasti yhteyttä:
 
 Riikka@sposti.fi
 
