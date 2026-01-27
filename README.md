@@ -1,57 +1,58 @@
-# MuscleApp – MERN Workout Tracker
+# MuscleApp – MERN-treenipäiväkirja
 
-MuscleApp is a full-stack **MERN** application that allows registered users to track their workouts, manage training sessions by date, and view personal statistics.  
-The application is built with a modern architecture and deployed to production using **Vercel** and **Render**.
+MuscleApp on full stack -tason **MERN**-sovellus, jonka avulla rekisteröitynyt käyttäjä voi seurata omia treenejään, hallita harjoituksia päivämäärän mukaan sekä tarkastella henkilökohtaisia tilastoja.  
+Sovellus on toteutettu modernilla arkkitehtuurilla ja julkaistu tuotantoon käyttäen **Verceliä** ja **Renderiä**.
 
 - **Live demo (frontend):** https://mernapp-umber.vercel.app
 - **Backend API:** https://mernapp-backend-tbx6.onrender.com
 
 ---
 
-## What This Project Demonstrates
+## Mitä projekti demonstroi
 
-- Full-stack MERN development
-- Secure authentication and authorization (JWT)
-- Clean separation of frontend and backend
-- RESTful API design
-- Production deployment and debugging
-- Real-world problem solving (CORS, environment variables, deployment issues)
+- Full-stack MERN -kehitystä
+- Full stack -projektin läpivienti ideasta tuotantoon
+- Turvallinen autentikointi ja valtuutus (JWT)
+- Frontend–backend-erottelu
+- REST-rajapintasuunnittelu
+- Tuotantoon vienti ja debuggaus
+- Ongelmien ratkaisu (CORS, ympäristömuuttujat, deploy-haasteet)
 
 ---
 
-## Features
+## Ominaisuudet
 
-### Authentication & Authorization
+### Autentikointi ja käyttöoikeudet
 
-- JWT-based authentication
-- Protected API endpoints
+- JWT-pohjainen kirjautuminen
+- Suojatut API-endpointit
 
-### Workout Management
+### Treenien hallinta
 
-- Create, update, and delete workouts
-- Workouts are user-specific
+- Treenien luonti, muokkaus ja poisto
+- Treenit ovat käyttäjäkohtaisia
 
-### Calendar-Based UI
+### Kalenteripohjainen käyttöliittymä
 
-- Day-based workout view
-- Weekly overview
+- Päiväkohtainen treeninäkymä
+- Viikkonäkymä
 
-### Profile & Statistics
+### Profiili ja tilastot
 
-- Workout counts
-- Historical workout data
+- Treenimäärät
+- Historiatiedot
 
-### Production Deployment
+### Tuotantoympäristö
 
 - Frontend: Vercel
 - Backend: Render
-- Database: MongoDB Atlas
+- Tietokanta: MongoDB Atlas
 
 ---
 
-## Screenshots
+## Screenshotit
 
-### Authentication
+### Kirjautuminen
 
 ![Login](screenshots/login.png)
 
@@ -59,17 +60,17 @@ The application is built with a modern architecture and deployed to production u
 
 ![Dashboard](screenshots/home.png)
 
-### Workout Details
+### Treenin tiedot
 
 ![Profile](screenshots/profile.png)
 
-### Profile & Statistics
+### Profiili & tilastot
 
 ![Workout List](screenshots/list.png)
 
 ---
 
-## Tech Stack
+## Teknologiat
 
 ### Frontend
 
@@ -97,7 +98,7 @@ The application is built with a modern architecture and deployed to production u
 
 ---
 
-## Project Structure
+## Projektin rakenne
 
 ```txt
 mernapp/
@@ -115,7 +116,7 @@ mernapp/
 
 ---
 
-## Environment Variables
+## Ympäristömuuttujat
 
 ### Backend(server)
 
@@ -155,6 +156,8 @@ VITE_BACKEND_URL=https://mernapp-backend-tbx6.onrender.com
 
 ## Api Endpoints
 
+Alla on listattuna sovelluksen keskeiset REST-rajapinnat.
+
 #### Auth
 
 - POST /api/user/signup
@@ -170,8 +173,8 @@ VITE_BACKEND_URL=https://mernapp-backend-tbx6.onrender.com
 
 ---
 
-## Contact
+## Ota yhteyttä
 
-This project was built for learning and portfolio purposes.
+- Projekti on toteutettu oppimistarkoituksiin
 
----
+- Jos haluat kysyä projektista tai antaa palautetta, voit olla yhteydessä GitHubin kautta.
