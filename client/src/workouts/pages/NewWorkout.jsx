@@ -18,6 +18,7 @@ import { AuthContext } from "../../context/auth";
 import WorkoutSelect from "../components/WorkoutSelect";
 import "./WorkoutForm.css";
 
+//Uuden treenin lisäys funktio
 const NewWorkout = () => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpHook();

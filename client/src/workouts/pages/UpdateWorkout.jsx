@@ -15,6 +15,7 @@ import {
 import { useForm } from "../../hooks/useForm";
 import { useHttpHook } from "../../hooks/httpHook";
 import { formatDateFI, dateToday, toISODateLocal } from "../../utils/date";
+import WorkoutSelect from "../components/WorkoutSelect";
 
 import "./WorkoutForm.css";
 import { AuthContext } from "../../context/auth";
@@ -31,6 +32,7 @@ const UpdateWorkout = () => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpHook();
   const [loadedWorkout, setLoadedWorkout] = useState(null);
+  const [typeId, setTypeId] = useState("");
 
   const { workoutId } = useParams();
   const navigate = useNavigate();
@@ -39,7 +41,6 @@ const UpdateWorkout = () => {
   const [formState, inputHandler, setFormData] = useForm(
     {
       date: { value: "", isValid: false },
-      type: { value: "", isValid: false },
       durationHours: { value: "", isValid: true },
       durationMinutes: { value: "", isValid: true },
       description: { value: "", isValid: true },
@@ -60,13 +61,17 @@ const UpdateWorkout = () => {
         const w = responseData.workout;
         setLoadedWorkout(w);
 
+        const initialTypeId =
+          typeof w.type === "string" ? w.type : w.type?.id || w.type?._id || "";
+
+        setTypeId(initialTypeId);
+
         const { hours, minutes } = toHoursMinutes(w.duration);
         const isoDate = toISODateLocal(w.date);
 
         setFormData(
           {
             date: { value: isoDate || today, isValid: true },
-            type: { value: w.type || "", isValid: true },
             durationHours: { value: hours, isValid: true },
             durationMinutes: { value: minutes, isValid: true },
             description: { value: w.description || "", isValid: true },
@@ -81,6 +86,7 @@ const UpdateWorkout = () => {
 
   const updateWorkoutHandler = async (event) => {
     event.preventDefault();
+    if (!typeId) return;
 
     const hRaw = formState.inputs.durationHours.value;
     const mRaw = formState.inputs.durationMinutes.value;
@@ -97,7 +103,7 @@ const UpdateWorkout = () => {
         "PATCH",
         JSON.stringify({
           date: formState.inputs.date.value,
-          type: formState.inputs.type.value,
+          type: typeId,
           description: formState.inputs.description.value,
           duration,
         }),
@@ -152,17 +158,7 @@ const UpdateWorkout = () => {
               max={today}
             />
 
-            <Input
-              id="type"
-              element="input"
-              type="text"
-              label="Laji"
-              validators={[valRequired()]}
-              errorText="Syötä puuttuvat tiedot"
-              onInput={inputHandler}
-              initialValue={formState.inputs.type.value}
-              initialValid={formState.inputs.type.isValid}
-            />
+            <WorkoutSelect value={typeId} onChange={setTypeId} />
 
             <div className="duration-row">
               <Input
@@ -203,7 +199,7 @@ const UpdateWorkout = () => {
             <div className="action_btns">
               <Button
                 type="submit"
-                disabled={!formState.isValid}
+                disabled={!formState.isValid || !typeId}
                 size="sm"
                 variant="gradient-green"
               >

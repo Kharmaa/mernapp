@@ -98,8 +98,12 @@ const deleteType = async (req, res, next) => {
     return next(new HttpError("Ei valtuuksia", 403));
   }
 
-  const inUse = await Workout.exists({ user: req.userData.userId, type: tid });
-  if (inUse) {
+  const inUse = await Workout.countDocuments({
+    user: req.userData.userId,
+    type: new mongoose.Types.ObjectId(tid),
+  });
+
+  if (inUse > 0) {
     return next(
       new HttpError(
         "Lajia ei voi poistaa, koska se on käytössä treeneissä.",
