@@ -13,6 +13,9 @@ const DayWorkout = ({
 }) => {
   const hasWorkouts = workouts.length > 0;
 
+  const typeLabel = (type) =>
+    typeof type === "string" ? type : type?.name || "Tuntematon laji";
+
   return (
     <Card title="Päivän harjoitukset" rightTitle={dayTitle}>
       {!hasWorkouts && (
@@ -32,7 +35,7 @@ const DayWorkout = ({
                 }`}
                 onClick={() => onSelectWorkout?.(w)}
               >
-                <span className="day__type">{w.type}</span>
+                <span className="day__type">{typeLabel(w.type)}</span>
                 {w.duration != null && (
                   <span className="day__duration">{w.duration} min</span>
                 )}

@@ -5,26 +5,44 @@ import Card from "../../layout/elements/Card";
 import Modal from "../../layout/elements/Modal";
 
 import { Link } from "react-router-dom";
+import { formatDateFI } from "../../utils/date";
 import "./WorkoutDetails.css";
 
 const WorkoutDetails = ({ selectedWorkout, onDeleteWorkout }) => {
   const hasWorkout = !!selectedWorkout;
-
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  const showDeleteWarningHandler = () => {
-    setShowConfirmModal(true);
-  };
+  const showDeleteWarningHandler = () => setShowConfirmModal(true);
+  const cancelDeleteHandler = () => setShowConfirmModal(false);
 
-  const cancelDeleteHandler = () => {
-    setShowConfirmModal(false);
-  };
   const confirmDeleteHandler = () => {
     setShowConfirmModal(false);
     if (!selectedWorkout) return;
-
     onDeleteWorkout?.(selectedWorkout.id || selectedWorkout._id);
   };
+
+  const typeLabel = !selectedWorkout
+    ? ""
+    : typeof selectedWorkout.type === "string"
+      ? selectedWorkout.type
+      : selectedWorkout.type?.name || "Tuntematon laji";
+
+  const dateLabel = !selectedWorkout
+    ? ""
+    : (() => {
+        try {
+          return formatDateFI(selectedWorkout.date);
+        } catch {
+          return String(selectedWorkout.date || "");
+        }
+      })();
+
+  const durationLabel =
+    selectedWorkout?.duration === null ||
+    selectedWorkout?.duration === undefined
+      ? "-"
+      : `${selectedWorkout.duration} min`;
+
   return (
     <>
       <Modal
@@ -60,19 +78,17 @@ const WorkoutDetails = ({ selectedWorkout, onDeleteWorkout }) => {
           <div className="workoutdet__content">
             <div className="workoutdet__row">
               <span className="workoutdet__label">Laji</span>
-              <span className="workoutdet__value">{selectedWorkout.type}</span>
+              <span className="workoutdet__value">{typeLabel}</span>
             </div>
 
             <div className="workoutdet__row">
               <span className="workoutdet__label">Päivä</span>
-              <span className="workoutdet__value">{selectedWorkout.date}</span>
+              <span className="workoutdet__value">{dateLabel}</span>
             </div>
 
             <div className="workoutdet__row">
               <span className="workoutdet__label">Kesto</span>
-              <span className="workoutdet__value">
-                {selectedWorkout.duration} min
-              </span>
+              <span className="workoutdet__value">{durationLabel}</span>
             </div>
 
             {selectedWorkout.description && (

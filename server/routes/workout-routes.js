@@ -21,7 +21,7 @@ router.post(
   "/",
   [
     check("date").not().isEmpty().withMessage("Päivämäärä puuttuu"),
-    check("type").not().isEmpty(),
+    check("type").not().isEmpty().isMongoId(),
     check("duration")
       .optional({ nullable: true, checkFalsy: true })
       .isInt({ min: 0 }),
@@ -36,7 +36,7 @@ router.patch(
   "/:wid",
   [
     check("date").optional().not().isEmpty(),
-    check("type").optional().not().isEmpty(),
+    check("type").optional().not().isEmpty().isMongoId(),
     check("duration")
       .optional({ nullable: true, checkFalsy: true })
       .isInt({ min: 0 }),

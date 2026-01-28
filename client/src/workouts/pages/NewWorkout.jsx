@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Input from "../../layout/formelements/Input";
 import {
   valRequired,
@@ -15,11 +15,13 @@ import { dateToday } from "../../utils/date";
 import { useNavigate } from "react-router-dom";
 import { useHttpHook } from "../../hooks/httpHook";
 import { AuthContext } from "../../context/auth";
+import WorkoutSelect from "../components/WorkoutSelect";
 import "./WorkoutForm.css";
 
 const NewWorkout = () => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpHook();
+  const [typeId, setTypeId] = useState("");
 
   const today = dateToday();
   const navigate = useNavigate();
@@ -27,7 +29,6 @@ const NewWorkout = () => {
   const [formState, inputHandler] = useForm(
     {
       date: { value: today, isValid: true },
-      type: { value: "", isValid: false },
       durationHours: { value: "0", isValid: true },
       durationMinutes: { value: "", isValid: true },
       description: { value: "", isValid: true },
@@ -42,10 +43,12 @@ const NewWorkout = () => {
     const m = Number(formState.inputs.durationMinutes.value || 0);
     const duration = h === 0 && m === 0 ? null : h * 60 + m;
 
+    if (!typeId) return;
+
     try {
       const body = {
         date: formState.inputs.date.value,
-        type: formState.inputs.type.value,
+        type: typeId,
         description: formState.inputs.description.value,
       };
 
@@ -94,15 +97,8 @@ const NewWorkout = () => {
             initialValid={true}
             max={today}
           />
-          <Input
-            id="type"
-            element="input"
-            type="text"
-            label="Laji"
-            validators={[valRequired()]}
-            errorText="Syötä puuttuvat tiedot"
-            onInput={inputHandler}
-          />
+
+          <WorkoutSelect value={typeId} onChange={setTypeId} />
 
           <div className="duration-row">
             <Input
@@ -141,7 +137,7 @@ const NewWorkout = () => {
           <div className="action_btns">
             <Button
               type="submit"
-              disabled={!formState.isValid}
+              disabled={!formState.isValid || !typeId}
               size="sm"
               variant="gradient-green"
             >

@@ -12,19 +12,6 @@ const WorkoutList = ({ items, onDeleteWorkout }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [workoutToDelete, setWorkoutToDelete] = useState(null);
 
-  if (!items || items.length === 0) {
-    return (
-      <Card title="Treenit">
-        <p>Ei kirjattuja treenejä</p>
-        <div className="workoutdet__actions">
-          <Button as={Link} to="/workouts/new">
-            Lisää uusi
-          </Button>
-        </div>
-      </Card>
-    );
-  }
-
   const showDeleteModal = (workoutId) => {
     setWorkoutToDelete(workoutId);
     setShowConfirmModal(true);
@@ -44,6 +31,19 @@ const WorkoutList = ({ items, onDeleteWorkout }) => {
 
     setWorkoutToDelete(null);
   };
+
+  if (!items || items.length === 0) {
+    return (
+      <Card title="Treenit">
+        <p>Ei kirjattuja treenejä</p>
+        <div className="workoutdet__actions">
+          <Button as={Link} to="/workouts/new">
+            Lisää uusi
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <>
@@ -75,44 +75,53 @@ const WorkoutList = ({ items, onDeleteWorkout }) => {
 
       <Card title="Treenilista" className="workout-list-card">
         <ul className="workout-list">
-          {items.map((workout) => (
-            <li key={workout.id} className="workout-list__item ">
-              <Card
-                rightTitle={formatDateFI(workout.date)}
-                className="workout-item-card"
-              >
-                <WorkoutItem
-                  type={workout.type}
-                  duration={workout.duration}
-                  description={workout.description}
-                  onClick={confirmDeleteHandler}
-                />
+          {items.map((workout) => {
+            const typeLabel =
+              typeof workout.type === "string"
+                ? workout.type
+                : workout.type?.name || "Tuntematon laji";
 
-                <hr className="workoutdet__hr" />
-
-                <div className="footer_btns">
-                  <Button
-                    as={Link}
-                    to={`/workouts/${workout.id}/edit`}
-                    size="sm"
-                    variant="edit"
-                  >
-                    Muokkaa
-                  </Button>
-
-                  <Button
-                    type="button"
-                    size="sm"
-                    variant="ghost"
+            return (
+              <li key={workout.id} className="workout-list__item">
+                <Card
+                  rightTitle={formatDateFI(workout.date)}
+                  className="workout-item-card"
+                >
+                  <WorkoutItem
+                    type={typeLabel}
+                    duration={workout.duration}
+                    description={workout.description}
+                    // jos WorkoutItem on klikattava, avaa poistomodaali tälle treenille
                     onClick={() => showDeleteModal(workout.id)}
-                  >
-                    Poista
-                  </Button>
-                </div>
-              </Card>
-            </li>
-          ))}
+                  />
+
+                  <hr className="workoutdet__hr" />
+
+                  <div className="footer_btns">
+                    <Button
+                      as={Link}
+                      to={`/workouts/${workout.id}/edit`}
+                      size="sm"
+                      variant="edit"
+                    >
+                      Muokkaa
+                    </Button>
+
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => showDeleteModal(workout.id)}
+                    >
+                      Poista
+                    </Button>
+                  </div>
+                </Card>
+              </li>
+            );
+          })}
         </ul>
+
         <div className="workoutdet__actions">
           <Button size="sm" variant="gradient" as={Link} to="/workouts/new">
             Lisää uusi

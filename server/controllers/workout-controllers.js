@@ -9,7 +9,9 @@ const getMyWorkouts = async (req, res, next) => {
   let workouts;
 
   try {
-    workouts = await Workout.find().sort({ date: -1 });
+    workouts = await Workout.find({ user: req.userData.userId }).sort({
+      date: -1,
+    });
   } catch (err) {
     return next(new HttpError("Harjoitusten haku epäonnistui", 500));
   }
@@ -20,9 +22,15 @@ const getMyWorkouts = async (req, res, next) => {
 const getWorkoutsByUserId = async (req, res, next) => {
   const userId = req.params.uid;
 
+  if (userId !== req.userData.userId) {
+    return next(new HttpError("Ei valtuuksia", 403));
+  }
+
   let workouts;
   try {
-    workouts = await Workout.find({ user: userId }).sort({ date: -1 });
+    workouts = await Workout.find({ user: req.userData.userId })
+      .populate("type", "name color icon")
+      .sort({ date: -1 });
   } catch (err) {
     return next(new HttpError("Treenien haku epäonnistui", 500));
   }
@@ -36,7 +44,10 @@ const getWorkoutById = async (req, res, next) => {
 
   let workout;
   try {
-    workout = await Workout.findById(workoutId);
+    workout = await Workout.findById(workoutId).populate(
+      "type",
+      "name color icon",
+    );
   } catch (err) {
     return next(new HttpError("Treenin haku epäonnistui", 500));
   }
@@ -78,7 +89,7 @@ const createWorkout = async (req, res, next) => {
     duration:
       duration === undefined || duration === "" ? null : Number(duration),
     description: description || "",
-    user: creator,
+    user: req.userData.userId,
   });
 
   let user;

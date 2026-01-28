@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const workoutRoutes = require("./routes/workout-routes");
 const userRoutes = require("./routes/user-routes");
+const workoutTypeRoutes = require("./routes/workout-type-routes");
 
 const HttpError = require("./models/http-error");
 require("dotenv").config();
@@ -47,6 +48,10 @@ app.use((req, res, next) => {
 
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/user", userRoutes);
+
+app.use("/api/types", workoutTypeRoutes);
+
+app.get("/ping", (req, res) => res.json({ ok: true }));
 
 app.use((req, res, next) => {
   const error = new HttpError("Reittiä ei löytynyt", 404);

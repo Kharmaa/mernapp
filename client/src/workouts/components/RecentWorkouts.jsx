@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import Button from "../../layout/formelements/Button";
 import Card from "../../layout/elements/Card";
+import { formatDateFI } from "../../utils/date";
 
 import "./RecentWorkouts.css";
 
@@ -19,6 +20,17 @@ export default function RecentWorkouts({ workouts = [], onSelectWorkout }) {
     );
   }
 
+  const typeLabel = (type) =>
+    typeof type === "string" ? type : type?.name || "Tuntematon laji";
+
+  const dateLabel = (date) => {
+    try {
+      return formatDateFI(date);
+    } catch {
+      return String(date || "");
+    }
+  };
+
   return (
     <Card title="Viimeisimmät harjoitukset">
       <ul className="recent__list">
@@ -30,8 +42,8 @@ export default function RecentWorkouts({ workouts = [], onSelectWorkout }) {
               onClick={() => onSelectWorkout?.(w)}
             >
               <div className="recent__left">
-                <span className="recent__date">{w.date}</span>
-                <span className="recent__type">{w.type}</span>
+                <span className="recent__date">{dateLabel(w.date)}</span>
+                <span className="recent__type">{typeLabel(w.type)}</span>
               </div>
 
               {w.duration != null && (
