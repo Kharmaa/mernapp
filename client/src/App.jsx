@@ -7,6 +7,7 @@ import Profile from "./user/pages/Profile";
 import NewWorkout from "./workouts/pages/NewWorkout";
 import UpdateWorkout from "./workouts/pages/UpdateWorkout";
 import Login from "./user/pages/Login";
+import WorkoutTypesManager from "./workouts/pages/WorkoutTypesManager";
 
 import { AuthContext } from "./context/auth";
 import ProtectedRoute from "./content/ProtectedRoute";
@@ -37,6 +38,8 @@ export default function App() {
               element={<UpdateWorkout />}
             />
             <Route path="profile" element={<Profile />} />
+            <Route path="profile/types" element={<WorkoutTypesManager />} />
+
             <Route path="*" element={<Home />} />
           </Route>
 

@@ -127,6 +127,9 @@ const WorkoutList = ({ items, onDeleteWorkout }) => {
             Lisää uusi
           </Button>
         </div>
+        <Button as={Link} to="/" size="sm" variant="ghost">
+          Takaisin
+        </Button>
       </Card>
     </>
   );

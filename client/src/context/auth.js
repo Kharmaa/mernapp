@@ -1,26 +1,14 @@
 import { createContext } from "react";
 
-/**
- * AuthContext
- *
- * AuthContextin avulla komponentit voivat tarkistaa, onko käyttäjä kirjautunut,
- * sekä käyttää käyttäjän tunnistetietoja ja kirjautumisfunktioita
- * ilman, että tietoja tarvitsee välittää propsien kautta.
- */
 export const AuthContext = createContext({
-  // Kertoo, onko käyttäjä kirjautunut sisään
+  // Kertoo käyttäjän kirjautumistilan. Antaa yksilöivän tunnisteen
   isLoggedIn: false,
-
-  // Kirjautuneen käyttäjän yksilöivä tunniste
   userId: null,
 
-  // JWT-token, jota käytetään suojattujen API-kutsujen yhteydessä
+  // JWT-token, jota käytetään suojattujen API-kutsujen Authorization-headerissa
   token: null,
 
-  // Funktio käyttäjän kirjautumista varten
-  // Varsinainen toteutus määritellään Context Providerissa
+  //funktiot kirjautumista ja uloskirjautumista varten
   login: () => {},
-
-  // Funktio käyttäjän uloskirjautumista varten
   logout: () => {},
 });

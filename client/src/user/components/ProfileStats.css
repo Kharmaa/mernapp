@@ -1,24 +1,127 @@
 .stats__row {
   display: grid;
-  gap: 0.4rem;
-  padding: 0.6rem 0;
+  gap: 0.15rem;
+  padding: 0.25rem 0;
+}
+
+.stats__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.1rem;
 }
 
 .stats__title {
   font-weight: 700;
-  letter-spacing: 0.04em;
 }
 
-.stats__values {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+.stats__badge {
+  font-size: 0.85rem;
   opacity: 0.9;
-  font-size: 0.9rem;
+  padding: 0.15rem 0.3rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.stats__values span {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
+.stats__grid {
+  display: grid;
+  gap: 0.3rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .stats__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stats__box {
+  padding: 0.35rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.stats__label {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-bottom: 0.25rem;
+}
+
+.stats__value {
+  font-weight: 700;
+}
+
+.stats__chartblock {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.stats__charttitle {
+  font-weight: 700;
+  opacity: 0.95;
+}
+
+.stats__chart {
+  padding: 0.75rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.statsTabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.statsTabs__tab {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.statsTabs__tab.is-active {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.22);
+  opacity: 1;
+}
+
+.statsCards {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .statsCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statsBox {
+  padding: 0.75rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statsBox--wide {
+  grid-column: 1 / -1;
+}
+
+.statsLabel {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-bottom: 0.25rem;
+}
+
+.statsValue {
+  font-weight: 800;
+  font-size: 1.05rem;
 }

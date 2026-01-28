@@ -4,6 +4,13 @@ const HttpError = require("../models/http-error");
 const Workout = require("../models/workout");
 const User = require("../models/user");
 
+// const Workout = require("../models/workout");
+
+// const inUse = await Workout.exists({ user: req.userData.userId, type: tid });
+// if (inUse) {
+//   return next(new HttpError("Lajia ei voi poistaa, koska se on käytössä treeneissä.", 422));
+// }
+
 // Lista kaikista logatuista harjoituksista
 const getMyWorkouts = async (req, res, next) => {
   let workouts;

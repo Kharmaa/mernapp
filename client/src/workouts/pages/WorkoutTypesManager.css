@@ -1,0 +1,40 @@
+.types__add {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.types__input {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.2);
+  color: inherit;
+}
+
+.types__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.types__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.types__name {
+  font-weight: 600;
+}
+
+.types__actions {
+  display: flex;
+  justify-content: flex-end;
+}
