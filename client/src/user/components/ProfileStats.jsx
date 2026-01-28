@@ -84,26 +84,27 @@ const ProfileStats = ({ workouts = [] }) => {
           Kaikki
         </button>
       </div>
+      <div className="statsCardsContainer">
+        <div className="statsCards">
+          <div className="statsBox">
+            <div className="statsLabel">Kerrat</div>
+            <div className="statsValue">{count}</div>
+          </div>
 
-      <div className="statsCards">
-        <div className="statsBox">
-          <div className="statsLabel">Kerrat</div>
-          <div className="statsValue">{count}</div>
-        </div>
+          <div className="statsBox">
+            <div className="statsLabel">Yhteisaika</div>
+            <div className="statsValue">{fmtMinutes(totalMin)}</div>
+          </div>
 
-        <div className="statsBox">
-          <div className="statsLabel">Yhteisaika</div>
-          <div className="statsValue">{fmtMinutes(totalMin)}</div>
-        </div>
+          <div className="statsBox">
+            <div className="statsLabel">Keskiarvo</div>
+            <div className="statsValue">{fmtMinutes(avgMin)}</div>
+          </div>
 
-        <div className="statsBox">
-          <div className="statsLabel">Keskiarvo</div>
-          <div className="statsValue">{fmtMinutes(avgMin)}</div>
-        </div>
-
-        <div className="statsBox statsBox--wide">
-          <div className="statsLabel">Suosituin laji</div>
-          <div className="statsValue">{fav}</div>
+          <div className="statsBox statsBox--wide">
+            <div className="statsLabel">Suosituin laji</div>
+            <div className="statsValue">{fav}</div>
+          </div>
         </div>
       </div>
     </Card>
