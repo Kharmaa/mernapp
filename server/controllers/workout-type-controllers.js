@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const HttpError = require("../models/http-error");
 const WorkoutType = require("../models/workout-type");
+const Workout = require("../models/workout");
 
 // Hae kirjautuneen käyttäjän lajit
 // GET /api/types
@@ -95,6 +96,16 @@ const deleteType = async (req, res, next) => {
 
   if (typeDoc.owner.toString() !== req.userData.userId) {
     return next(new HttpError("Ei valtuuksia", 403));
+  }
+
+  const inUse = await Workout.exists({ user: req.userData.userId, type: tid });
+  if (inUse) {
+    return next(
+      new HttpError(
+        "Lajia ei voi poistaa, koska se on käytössä treeneissä.",
+        422,
+      ),
+    );
   }
 
   try {
