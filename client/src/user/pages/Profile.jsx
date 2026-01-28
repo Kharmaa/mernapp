@@ -9,7 +9,7 @@ import Errors from "../../layout/elements/Errors";
 import Loading from "../../layout/elements/Loading";
 import Card from "../../layout/elements/Card";
 import Button from "../../layout/formelements/Button";
-import WorkoutHeatmap from "../components/WorkoutHeatmap";
+// import WorkoutHeatmap from "../components/WorkoutHeatmap";
 import { Link } from "react-router-dom";
 
 import "./Profile.css";
@@ -85,7 +85,7 @@ const Profile = () => {
               Muokkaa lajeja
             </Button>
           </Card>{" "}
-          <Card title="Aktiivisuus">
+          {/* <Card title="Aktiivisuus">
             <div className="heatmap--small">
               <WorkoutHeatmap
                 workouts={workouts}
@@ -93,7 +93,7 @@ const Profile = () => {
                 onSelectDate={(iso) => console.log("Valittu päivä:", iso)}
               />
             </div>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </>
