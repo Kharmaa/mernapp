@@ -16,13 +16,13 @@ const Footer = () => {
       <footer className="footer">
         <div className="footer__links">
           <button type="button" onClick={() => setOpenKey("contact")}>
-            CONTACT
+            OTA YHTEYTTÄ
           </button>
           <button type="button" onClick={() => setOpenKey("privacy")}>
-            PRIVACY POLICY
+            TIETOSUOJA
           </button>
           <button type="button" onClick={() => setOpenKey("terms")}>
-            TERMS
+            EHDOT
           </button>
         </div>
 

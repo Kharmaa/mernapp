@@ -116,7 +116,7 @@ const Login = () => {
             element="input"
             id="email"
             type="email"
-            label="E-Mail"
+            label="Sähköposti"
             validators={[valEmail()]}
             onInput={inputHandler}
           />
