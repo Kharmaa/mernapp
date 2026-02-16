@@ -3,8 +3,6 @@ import { AuthContext } from "../../context/auth";
 import { useHttpHook } from "../../hooks/httpHook";
 import Button from "../../layout/formelements/Button";
 
-import "./WorkoutSelect.css";
-
 const WorkoutSelect = ({
   value, //valittu type ID
   onChange, //(newTypeId)

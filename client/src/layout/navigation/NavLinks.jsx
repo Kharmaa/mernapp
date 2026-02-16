@@ -13,7 +13,7 @@ const NavLinks = () => {
       {isLoggedIn && (
         <>
           <li>
-            <NavLink to="/">NÄKYMÄ</NavLink>
+            <NavLink to="/home">NÄKYMÄ</NavLink>
           </li>
           <li>
             <NavLink to="/workouts/new">LISÄÄ UUSI +</NavLink>

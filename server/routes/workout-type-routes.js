@@ -12,21 +12,13 @@ router.get("/", typeCtrls.getMyTypes);
 
 router.post(
   "/",
-  [
-    check("name").not().isEmpty().withMessage("Nimi puuttuu"),
-    check("color").optional({ checkFalsy: true }).isString(),
-    check("icon").optional({ checkFalsy: true }).isString(),
-  ],
+  [check("name").not().isEmpty().withMessage("Nimi puuttuu")],
   typeCtrls.createType,
 );
 
 router.patch(
   "/:tid",
-  [
-    check("name").optional().not().isEmpty(),
-    check("color").optional({ checkFalsy: true }).isString(),
-    check("icon").optional({ checkFalsy: true }).isString(),
-  ],
+  [check("name").optional().not().isEmpty()],
   typeCtrls.updateType,
 );
 

@@ -29,7 +29,7 @@ const getWorkoutsByUserId = async (req, res, next) => {
   let workouts;
   try {
     workouts = await Workout.find({ user: req.userData.userId })
-      .populate("type", "name color icon")
+      .populate("type", "name")
       .sort({ date: -1 });
   } catch (err) {
     return next(new HttpError("Treenien haku epäonnistui", 500));
@@ -44,10 +44,7 @@ const getWorkoutById = async (req, res, next) => {
 
   let workout;
   try {
-    workout = await Workout.findById(workoutId).populate(
-      "type",
-      "name color icon",
-    );
+    workout = await Workout.findById(workoutId).populate("type", "name");
   } catch (err) {
     return next(new HttpError("Treenin haku epäonnistui", 500));
   }

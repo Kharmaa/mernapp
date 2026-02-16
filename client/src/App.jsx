@@ -26,11 +26,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Julkiset */}
+          <Route index element={<Login />} />
           <Route path="login" element={<Login />} />
 
           {/* Suojatut */}
           <Route element={<ProtectedRoute />}>
-            <Route index element={<Home />} />
+            <Route path="home" element={<Home />} />
             <Route path="workouts" element={<UserWorkouts />} />
             <Route path="workouts/new" element={<NewWorkout />} />
             <Route

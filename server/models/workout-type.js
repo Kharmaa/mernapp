@@ -4,8 +4,6 @@ const Schema = mongoose.Schema;
 const workoutTypeSchema = new Schema(
   {
     name: { type: String, required: true, trim: true },
-    color: { type: String, trim: true, default: "" },
-    icon: { type: String, trim: true, default: "" },
     owner: { type: mongoose.Types.ObjectId, ref: "User", required: true },
   },
   { timestamps: true },

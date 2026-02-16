@@ -75,7 +75,7 @@ const Login = () => {
       );
 
       auth.login(responseData.userId, responseData.token);
-      navigate("/", { replace: true });
+      navigate("/home", { replace: true });
     } catch (err) {
       console.log(err);
     }

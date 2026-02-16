@@ -22,13 +22,11 @@ const createType = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) return next(new HttpError("Tarkista syötteesi", 422));
 
-  const { name, color, icon } = req.body;
+  const { name } = req.body;
 
   try {
     const created = new WorkoutType({
       name: name.trim(),
-      color: color || "",
-      icon: icon || "",
       owner: req.userData.userId,
     });
 
@@ -50,7 +48,7 @@ const updateType = async (req, res, next) => {
   if (!errors.isEmpty()) return next(new HttpError("Tarkista syötteesi", 422));
 
   const { tid } = req.params;
-  const { name, color, icon } = req.body;
+  const { name } = req.body;
 
   let typeDoc;
   try {
@@ -66,8 +64,6 @@ const updateType = async (req, res, next) => {
   }
 
   if (name !== undefined) typeDoc.name = name.trim();
-  if (color !== undefined) typeDoc.color = color;
-  if (icon !== undefined) typeDoc.icon = icon;
 
   try {
     await typeDoc.save();
