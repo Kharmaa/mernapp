@@ -2,14 +2,14 @@ import { useState } from "react";
 
 import Button from "../formelements/Button";
 import Modal from "../elements/Modal";
-import { legalTexts } from "../../content/importantTexts";
+import { texts } from "../../content/texts";
 import "./Footer.css";
 
 const Footer = () => {
   const [openKey, setOpenKey] = useState(null);
 
   const close = () => setOpenKey(null);
-  const data = openKey ? legalTexts[openKey] : null;
+  const data = openKey ? texts.legal[openKey] : null;
 
   return (
     <>

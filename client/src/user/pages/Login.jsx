@@ -10,6 +10,7 @@ import { valEmail, valMinlength, valRequired } from "../../utils/validators";
 import { useForm } from "../../hooks/useForm";
 import { AuthContext } from "../../context/auth";
 import { useHttpHook } from "../../hooks/httpHook";
+import { texts } from "../../content/texts";
 
 import "./Login.css";
 
@@ -83,6 +84,13 @@ const Login = () => {
   return (
     <div className="login-page">
       <Errors error={error} onClear={clearError} />
+
+      <div className="login-info">
+        <h3 className="navigation__title glitch-info" data-text="Info">
+          Info
+        </h3>
+        <p className="legal-text">{texts.main.landing}</p>
+      </div>
 
       <Card className="login-form">
         {isLoading && <Loading asOverlay />}
