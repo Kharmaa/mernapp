@@ -28,20 +28,17 @@
 }
 
 .modal__header h2 {
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   font-family: "Anton SC", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #9ce6e7;
   -webkit-text-stroke: 1px #000000;
-}
-
-.modal__header h2 {
-  margin: 0.5rem;
+  margin: 0.2rem;
 }
 
 .modal__content {
-  padding: 1rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .modal__footer {

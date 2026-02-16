@@ -41,9 +41,7 @@ const Footer = () => {
           </Button>
         }
       >
-        <div style={{ whiteSpace: "pre-line", fontSize: "0.85rem" }}>
-          {data?.content}
-        </div>
+        <div style={{ whiteSpace: "pre-line" }}>{data?.content}</div>
       </Modal>
     </>
   );

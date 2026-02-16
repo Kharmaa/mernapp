@@ -45,7 +45,6 @@ const Login = () => {
     setIsLoginMode((prev) => !prev);
   };
 
-  //LOGIN/SIGNUP : BACKEND -- USER-ROUTES:
   const loginHandler = async (event) => {
     event.preventDefault();
 
@@ -55,7 +54,6 @@ const Login = () => {
       ? `${base}/api/user/login`
       : `${base}/api/user/signup`;
 
-    console.log("LOGIN URL:", url);
     const payload = isLoginMode
       ? {
           email: formState.inputs.email.value,
@@ -72,9 +70,7 @@ const Login = () => {
         url,
         "POST",
         JSON.stringify(payload),
-        {
-          "Content-Type": "application/json",
-        },
+        { "Content-Type": "application/json" },
       );
 
       auth.login(responseData.userId, responseData.token);
@@ -85,8 +81,9 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="login-page">
       <Errors error={error} onClear={clearError} />
+
       <Card className="login-form">
         {isLoading && <Loading asOverlay />}
         <div className="login-form__header">
@@ -134,7 +131,7 @@ const Login = () => {
           {isLoginMode ? "REKISTERÖIDY" : "KIRJAUDU"}
         </Button>
       </Card>
-    </>
+    </div>
   );
 };
 
