@@ -2,6 +2,7 @@ const { validationResult } = require("express-validator");
 const HttpError = require("../models/http-error");
 const WorkoutType = require("../models/workout-type");
 const Workout = require("../models/workout");
+const mongoose = require("mongoose");
 
 // Hae kirjautuneen käyttäjän lajit
 // GET /api/types
@@ -96,7 +97,7 @@ const deleteType = async (req, res, next) => {
 
   const inUse = await Workout.countDocuments({
     user: req.userData.userId,
-    type: new mongoose.Types.ObjectId(tid),
+    type: tid,
   });
 
   if (inUse > 0) {
