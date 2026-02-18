@@ -1,6 +1,6 @@
 # MuscleApp – MERN-treenipäiväkirja
 
-MuscleApp on full stack -tason **MERN**-sovellus, jonka avulla rekisteröitynyt käyttäjä voi seurata omia treenejään, hallita harjoituksia päivämäärän mukaan sekä tarkastella henkilökohtaisia tilastoja.  
+MuscleApp on full stack -tason **MERN**-sovellus, jonka avulla rekisteröitynyt käyttäjä voi voi kirjata treenejä, hallita omia harjoituslajejaan sekä tarkastella henkilökohtaisia tilastoja.  
 Sovellus on toteutettu modernilla arkkitehtuurilla ja julkaistu tuotantoon käyttäen **Verceliä** ja **Renderiä**.
 
 - **Live demo (frontend):** https://mernapp-umber.vercel.app
@@ -26,6 +26,7 @@ Sovellus on toteutettu modernilla arkkitehtuurilla ja julkaistu tuotantoon käyt
 
 - JWT-pohjainen kirjautuminen
 - Suojatut API-endpointit
+- Automaattinen uloskirjautuminen tokenin vanhentuessa
 
 ### Treenien hallinta
 
@@ -37,10 +38,18 @@ Sovellus on toteutettu modernilla arkkitehtuurilla ja julkaistu tuotantoon käyt
 - Päiväkohtainen treeninäkymä
 - Viikkonäkymä
 
+### Lajien hallinta
+
+- Käyttäjä voi luoda omia harjoituslajeja
+- Lajeja voi muokata ja poistaa
+- Laji ei ole poistettavissa, jos sitä käytetään treeneissä
+
 ### Profiili ja tilastot
 
-- Treenimäärät
-- Historiatiedot
+- Viikkotilastot
+- Kuukausitilastot
+- Kaikki treenit yhteensä
+- Treenien lukumäärä ja kokonaiskesto
 
 ### Tuotantoympäristö
 
@@ -87,6 +96,7 @@ Sovellus on toteutettu modernilla arkkitehtuurilla ja julkaistu tuotantoon käyt
 - MongoDB + Mongoose
 - JWT Authentication
 - express-validator
+- REST API -arkkitehtuuri
 
 ### DevOps / Tooling
 
@@ -166,10 +176,19 @@ Alla on listattuna sovelluksen keskeiset REST-rajapinnat.
 
 #### Workouts
 
+- GET /api/workouts
+- GET /api/workouts/:wid
 - GET /api/workouts/user/:uid
 - POST /api/workouts
 - PATCH /api/workouts/:wid
 - DELETE /api/workouts/:wid
+
+#### Workout Types
+
+- GET /api/types
+- POST /api/types
+- PATCH /api/types/:tid
+- DELETE /api/types/:tid
 
 ---
 
