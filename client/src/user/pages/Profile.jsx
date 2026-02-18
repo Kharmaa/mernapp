@@ -9,6 +9,7 @@ import Errors from "../../layout/elements/Errors";
 import Loading from "../../layout/elements/Loading";
 import Card from "../../layout/elements/Card";
 import { Link } from "react-router-dom";
+import Button from "../../layout/formelements/Button";
 
 import "./Profile.css";
 

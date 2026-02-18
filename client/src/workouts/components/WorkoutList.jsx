@@ -160,7 +160,7 @@ const WorkoutList = ({
             Lisää uusi
           </Button>
         </div>
-        <Button as={Link} to="/" size="sm" variant="ghost">
+        <Button as={Link} to="/home" size="sm" variant="ghost">
           Takaisin
         </Button>
       </Card>
