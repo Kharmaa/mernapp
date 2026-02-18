@@ -9,12 +9,15 @@ const Footer = () => {
   const [openKey, setOpenKey] = useState(null);
 
   const close = () => setOpenKey(null);
+
+  // Hakee valitun sisällön texts-objektista
   const data = openKey ? texts.legal[openKey] : null;
 
   return (
     <>
       <footer className="footer">
         <div className="footer__links">
+          {/* Napit modaalien avaamiseen */}
           <button type="button" onClick={() => setOpenKey("contact")}>
             OTA YHTEYTTÄ
           </button>
@@ -31,6 +34,7 @@ const Footer = () => {
         </div>
       </footer>
 
+      {/* Näyttää valitun sisällön modaalissa */}
       <Modal
         show={!!data}
         onCancel={close}
@@ -41,6 +45,7 @@ const Footer = () => {
           </Button>
         }
       >
+        {/* Näytetään teksti rivinvaihdot säilyttäen */}
         <div style={{ whiteSpace: "pre-line" }}>{data?.content}</div>
       </Modal>
     </>

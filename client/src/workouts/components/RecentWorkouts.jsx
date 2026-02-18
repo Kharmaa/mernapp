@@ -6,11 +6,13 @@ import { formatDateFI } from "../../utils/date";
 
 import "./RecentWorkouts.css";
 
+// Näyttää 4 viimeisintä treeniä
+// Järjestetään treenit uusimmasta vanhimpaan
 export default function RecentWorkouts({ workouts = [], onSelectWorkout }) {
   const recent = workouts
     .slice()
     .sort((a, b) => b.id.localeCompare(a.id))
-    .slice(0, 5);
+    .slice(0, 4);
 
   if (workouts.length === 0) {
     return (
@@ -20,9 +22,11 @@ export default function RecentWorkouts({ workouts = [], onSelectWorkout }) {
     );
   }
 
+  // Muuntaa treenityypin näytettävään muotoon
   const typeLabel = (type) =>
     typeof type === "string" ? type : type?.name || "Tuntematon laji";
 
+  // Muotoilee päivämäärän
   const dateLabel = (date) => {
     try {
       return formatDateFI(date);
@@ -57,7 +61,7 @@ export default function RecentWorkouts({ workouts = [], onSelectWorkout }) {
       </ul>
 
       <hr />
-
+      {/* Linkki koko treenilistaan */}
       <div className="workoutdet__actions">
         <Button size="sm" variant="gradient" as={Link} to="/workouts">
           Näytä lisää

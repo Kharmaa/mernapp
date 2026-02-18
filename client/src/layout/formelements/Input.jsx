@@ -3,6 +3,7 @@ import { useReducer, useEffect } from "react";
 import { validate } from "../../utils/validators";
 import "./Input.css";
 
+// Reducer hallitsee inputin arvoa, validiutta ja "kosketettu" -tilaa
 const inputReducer = (state, action) => {
   switch (action.type) {
     case "CHANGE":
@@ -27,6 +28,7 @@ const inputReducer = (state, action) => {
 };
 
 const Input = (props) => {
+  // Inputin paikallinen state (value, valid, touched)
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: props.initialValue ?? "",
     isTouched: false,
@@ -36,10 +38,12 @@ const Input = (props) => {
   const { id, onInput } = props;
   const { value, isValid } = inputState;
 
+  // Ilmoittaa parentille aina kun arvo tai validius muuttuu
   useEffect(() => {
     onInput(id, value, isValid);
   }, [id, value, isValid, onInput]);
 
+  // Päivittää inputin tilan jos initialValue/initialValid muuttuu
   useEffect(() => {
     dispatch({
       type: "SET",
@@ -48,6 +52,7 @@ const Input = (props) => {
     });
   }, [props.initialValue, props.initialValid]);
 
+  // Käsittelee kirjoittamisen: päivittää state + validointi
   const changeHandler = (event) => {
     dispatch({
       type: "CHANGE",
@@ -56,12 +61,14 @@ const Input = (props) => {
     });
   };
 
+  // Käsittelee blurin: merkitsee kentän kosketetuksi
   const touchHandler = () => {
     dispatch({
       type: "TOUCH",
     });
   };
 
+  // Renderöi joko inputin tai textarea:n props.elementin mukaan
   const element =
     props.element === "input" ? (
       <input
@@ -83,6 +90,7 @@ const Input = (props) => {
     );
 
   return (
+    // Lisää invalid-luokan vain jos kenttä on kosketettu ja epävalidi
     <div
       className={`form-control ${
         !inputState.isValid && inputState.isTouched && "form-control--invalid"

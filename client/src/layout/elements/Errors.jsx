@@ -1,6 +1,7 @@
 import Modal from "./Modal";
 import Button from "../formelements/Button";
 
+// Näyttää virheilmoituksen modaalina
 const ErrorModal = (props) => {
   return (
     <Modal

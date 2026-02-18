@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { formatDateFI } from "../../utils/date";
 import "./WorkoutDetails.css";
 
+// Näyttää valitun treenin tiedot + mahdollistaa muokkauksen ja poiston
 const WorkoutDetails = ({ selectedWorkout, onDeleteWorkout }) => {
   const hasWorkout = !!selectedWorkout;
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -15,18 +16,21 @@ const WorkoutDetails = ({ selectedWorkout, onDeleteWorkout }) => {
   const showDeleteWarningHandler = () => setShowConfirmModal(true);
   const cancelDeleteHandler = () => setShowConfirmModal(false);
 
+  // Vahvistaa poiston ja kutsuu parentin poisto-funktion
   const confirmDeleteHandler = () => {
     setShowConfirmModal(false);
     if (!selectedWorkout) return;
     onDeleteWorkout?.(selectedWorkout.id || selectedWorkout._id);
   };
 
+  // Muodostaa näytettävän lajitekstin (string/objekti)
   const typeLabel = !selectedWorkout
     ? ""
     : typeof selectedWorkout.type === "string"
       ? selectedWorkout.type
       : selectedWorkout.type?.name || "Tuntematon laji";
 
+  // Muotoilee päivämäärän
   const dateLabel = !selectedWorkout
     ? ""
     : (() => {
@@ -68,12 +72,14 @@ const WorkoutDetails = ({ selectedWorkout, onDeleteWorkout }) => {
       </Modal>
 
       <Card title="Harjoituksen tiedot">
+        {/* Jos treeniä ei ole valittu */}
         {!hasWorkout && (
           <p className="workoutdet__placeholder">
             Valitse harjoitus päivän listalta nähdäksesi tarkemmat tiedot.
           </p>
         )}
 
+        {/* Jos treeni on valittu, näytetään tiedot */}
         {hasWorkout && (
           <div className="workoutdet__content">
             <div className="workoutdet__row">
@@ -102,6 +108,7 @@ const WorkoutDetails = ({ selectedWorkout, onDeleteWorkout }) => {
           </div>
         )}
 
+        {/* Toimintonapit vain jos treeni on valittu */}
         {hasWorkout && (
           <>
             <hr className="workoutdet__hr" />

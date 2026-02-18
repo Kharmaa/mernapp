@@ -1,7 +1,10 @@
 import "./Card.css";
 
+// Yleiskäyttöinen Card-komponentti sisällön kehystämiseen
+// Voi sisältää vasemman otsikon, oikean otsikon ja vapaata sisältöä (children)
 const Card = ({ title, rightTitle, children, className = "" }) => {
   return (
+    // Perus korttipohja + mahdollinen lisätyyli
     <div className={`dashboard-card ${className}`}>
       <div className="dashboard-card__header">
         <span>{title}</span>

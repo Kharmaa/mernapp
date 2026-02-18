@@ -1,5 +1,6 @@
 import "./UserCard.css";
 
+// Näyttää käyttäjän perustiedot korttimuodossa
 const UserCard = ({ user }) => {
   return (
     <div className="user-card">

@@ -8,24 +8,26 @@ import ProfileStats from "../components/ProfileStats";
 import Errors from "../../layout/elements/Errors";
 import Loading from "../../layout/elements/Loading";
 import Card from "../../layout/elements/Card";
-import Button from "../../layout/formelements/Button";
-// import WorkoutHeatmap from "../components/WorkoutHeatmap";
 import { Link } from "react-router-dom";
 
 import "./Profile.css";
 
+// Profiilisivu: näyttää käyttäjän tiedot, tilastot ja omat lajit
 const Profile = () => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpHook();
 
+  // Käyttäjän treenit ja lajit
   const [workouts, setWorkouts] = useState([]);
   const [types, setTypes] = useState([]);
 
+  // Hakee treenit ja lajit backendistä
   useEffect(() => {
     const fetchAll = async () => {
       try {
         const headers = { Authorization: "Bearer " + auth.token };
 
+        // Haetaan treenit ja lajit rinnakkain
         const [workoutsData, typesData] = await Promise.all([
           sendRequest(
             `${import.meta.env.VITE_BACKEND_URL}/api/workouts/user/${auth.userId}`,
@@ -41,6 +43,7 @@ const Profile = () => {
           ),
         ]);
 
+        // Normalisoidaan päivämäärät ISO-muotoon
         const normalized = (workoutsData.workouts || []).map((w) => ({
           ...w,
           date: toISODateLocal(w.date),
@@ -61,8 +64,9 @@ const Profile = () => {
 
       <div className="dashboard-grid">
         <div className="dashboard-column">
+          {/* Käyttäjän perustiedot */}
           <User />
-
+          {/* Treenitilastot */}
           <ProfileStats workouts={workouts} />
         </div>
 
@@ -80,20 +84,11 @@ const Profile = () => {
             )}
 
             <hr />
-
+            {/* Linkki lajien muokkaussivulle */}
             <Button as={Link} to="/profile/types" size="sm" variant="edit">
               Muokkaa lajeja
             </Button>
-          </Card>{" "}
-          {/* <Card title="Aktiivisuus">
-            <div className="heatmap--small">
-              <WorkoutHeatmap
-                workouts={workouts}
-                title="Kuukausi"
-                onSelectDate={(iso) => console.log("Valittu päivä:", iso)}
-              />
-            </div>
-          </Card> */}
+          </Card>
         </div>
       </div>
     </>

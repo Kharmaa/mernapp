@@ -5,6 +5,7 @@ import Card from "../../layout/elements/Card";
 
 import "./DayWorkout.css";
 
+// Näyttää valitun päivän treenit listana
 const DayWorkout = ({
   workouts = [],
   onSelectWorkout,
@@ -13,6 +14,7 @@ const DayWorkout = ({
 }) => {
   const hasWorkouts = workouts.length > 0;
 
+  // Muuntaa treenityypin aina näytettäväksi nimeksi
   const typeLabel = (type) =>
     typeof type === "string" ? type : type?.name || "Tuntematon laji";
 
@@ -24,6 +26,7 @@ const DayWorkout = ({
         </div>
       )}
 
+      {/* Jos treenejä löytyy */}
       {hasWorkouts && (
         <ul className="day__list">
           {workouts.map((w) => (
@@ -33,9 +36,10 @@ const DayWorkout = ({
                 className={`day__item ${
                   selectedWorkout?.id === w.id ? "day__item--active" : ""
                 }`}
-                onClick={() => onSelectWorkout?.(w)}
+                onClick={() => onSelectWorkout?.(w)} // Valitaan treeni
               >
                 <span className="day__type">{typeLabel(w.type)}</span>
+                {/* Näytetään kesto jos olemassa */}
                 {w.duration != null && (
                   <span className="day__duration">{w.duration} min</span>
                 )}
@@ -45,6 +49,7 @@ const DayWorkout = ({
         </ul>
       )}
       <hr />
+      {/* Uuden treenin lisäys */}
       <div className="action_btns">
         <Button as={Link} to="/workouts/new" variant="gradient" size="sm">
           Lisää uusi

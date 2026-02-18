@@ -7,9 +7,12 @@ import UserCard from "../components/UserCard";
 import { useHttpHook } from "../../hooks/httpHook";
 import { AuthContext } from "../../context/auth";
 
+// Hakee ja näyttää kirjautuneen käyttäjän profiilitiedot
 const User = () => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpHook();
+
+  // Tallennetaan backendistä haettu käyttäjä
   const [loggedUser, setLoggedUser] = useState(null);
 
   useEffect(() => {
@@ -21,6 +24,7 @@ const User = () => {
       }
 
       try {
+        // Haetaan kirjautuneen käyttäjän tiedot
         const responseData = await sendRequest(
           `${import.meta.env.VITE_BACKEND_URL}/api/user/me`,
           "GET",
@@ -43,6 +47,7 @@ const User = () => {
       {isLoading && <Loading />}
       <div className="user-profile">
         <Card title="Profiili">
+          {/* Näytetään käyttäjän tiedot jos löytyy */}
           {!isLoading && loggedUser && <UserCard user={loggedUser} />}
           {!isLoading && !loggedUser && (
             <p>Kirjaudu sisään nähdäksesi profiilin.</p>

@@ -1,3 +1,4 @@
+/* Perus nappityyli */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -19,21 +20,21 @@ a.btn {
   text-decoration: none;
 }
 
+/* Koko-variantit */
 .btn--sm {
   padding: 0.35rem 0.7rem;
   font-size: 0.7rem;
 }
-
 .btn--md {
   padding: 0.5rem 0.9rem;
   font-size: 0.75rem;
 }
-
 .btn--lg {
   padding: 0.8rem 1.6rem;
   font-size: 0.85rem;
 }
 
+/* Primary-tyyli */
 .btn--primary {
   background: #c5f249a0;
   color: #000;
@@ -47,6 +48,7 @@ a.btn {
   color: #000000;
 }
 
+/* Secondary-tyyli */
 .btn--secondary {
   color: #c4f249;
   background-color: #000;
@@ -58,6 +60,7 @@ a.btn {
   color: #000;
 }
 
+/* Ghost-tyyli (kevyt tekstimäinen nappi) */
 .btn--ghost {
   background: transparent;
   border: none;
@@ -69,6 +72,8 @@ a.btn {
 .btn--ghost:hover {
   text-decoration: underline;
 }
+
+/* Edit-gradient-nappi */
 .btn--edit {
   background-image: linear-gradient(
     to right,
@@ -86,6 +91,7 @@ a.btn {
   color: #454545;
 }
 
+/* Sininen gradient */
 .btn--gradient {
   background-image: linear-gradient(
     to right,
@@ -102,6 +108,7 @@ a.btn {
   background-position: right center;
 }
 
+/* Vihreä gradient */
 .btn--gradient-green {
   background-image: linear-gradient(
     to right,
@@ -117,6 +124,7 @@ a.btn {
   background-position: right center;
 }
 
+/* Danger-nappi (varoitus / poisto) */
 .btn--danger {
   background-image: linear-gradient(
     to right,
@@ -134,11 +142,13 @@ a.btn {
   background-position: right center;
 }
 
+/* Disabled-tila */
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
+/* Footer-painikkeiden asettelu */
 .footer_btns {
   width: 50%;
   margin: 0 auto;

@@ -1,5 +1,7 @@
 import "./MainHeader.css";
 
+// Sivuston pääheader-komponentti
+// Toimii layout-wrapperina ja näyttää sisällön (children) header-alueella
 const MainHeader = (props) => {
   return (
     <header className="header-main">

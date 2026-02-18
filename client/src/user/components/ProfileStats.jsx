@@ -3,13 +3,16 @@ import Card from "../../layout/elements/Card";
 import { fromISODateLocal, startOfISOWeek, dateToday } from "../../utils/date";
 import "./ProfileStats.css";
 
+// Muuntaa treenityypin aina näytettäväksi nimeksi (string tai objekti)
 const toTypeName = (type) =>
   typeof type === "string" ? type : type?.name || "Tuntematon laji";
 
+// Laskee treenien kestojen summan minuuteissa
 const sumDuration = (arr) =>
   arr.reduce((acc, w) => acc + (Number(w.duration) || 0), 0);
 
-const fmtMinutes = (total) => {
+// Muotoilee minuutit "1 h 20 min"
+const minutesTo = (total) => {
   const m = Number(total) || 0;
   const h = Math.floor(m / 60);
   const mm = m % 60;
@@ -18,6 +21,7 @@ const fmtMinutes = (total) => {
   return `${h} h ${mm} min`;
 };
 
+// Selvittää suosituimman lajin (eniten treenikertoja)
 const topType = (arr) => {
   if (!arr.length) return "-";
   const counts = new Map();
@@ -33,8 +37,10 @@ const topType = (arr) => {
 };
 
 const ProfileStats = ({ workouts = [] }) => {
-  const [tab, setTab] = useState("week"); // week | month | all
+  // Valittu näkymä: viikon / kuukauden / kaikkien treenien tilastot
+  const [tab, setTab] = useState("week");
 
+  // Lasketaan viikon ja kuukauden treenilistat vain kun workouts muuttuu
   const { week, month, all } = useMemo(() => {
     const today = fromISODateLocal(dateToday());
     const weekStart = startOfISOWeek(today);
@@ -52,8 +58,10 @@ const ProfileStats = ({ workouts = [] }) => {
     return { week: weekList, month: monthList, all: workouts };
   }, [workouts]);
 
+  // Valitaan aktiivinen lista tabin mukaan
   const activeList = tab === "week" ? week : tab === "month" ? month : all;
 
+  // Lasketaan tilastot aktiivisesta listasta
   const count = activeList.length;
   const totalMin = sumDuration(activeList);
   const avgMin = count ? Math.round(totalMin / count) : 0;
@@ -61,6 +69,7 @@ const ProfileStats = ({ workouts = [] }) => {
 
   return (
     <Card title="Tilastot">
+      {/* Tabit*/}
       <div className="statsTabs">
         <button
           type="button"
@@ -84,6 +93,7 @@ const ProfileStats = ({ workouts = [] }) => {
           Kaikki
         </button>
       </div>
+      {/* Näytettävät tilastokortit */}
       <div className="statsCardsContainer">
         <div className="statsCards">
           <div className="statsBox">
@@ -93,12 +103,12 @@ const ProfileStats = ({ workouts = [] }) => {
 
           <div className="statsBox">
             <div className="statsLabel">Yhteisaika</div>
-            <div className="statsValue">{fmtMinutes(totalMin)}</div>
+            <div className="statsValue">{minutesTo(totalMin)}</div>
           </div>
 
           <div className="statsBox">
             <div className="statsLabel">Keskiarvo</div>
-            <div className="statsValue">{fmtMinutes(avgMin)}</div>
+            <div className="statsValue">{minutesTo(avgMin)}</div>
           </div>
 
           <div className="statsBox statsBox--wide">

@@ -14,6 +14,8 @@ import { texts } from "../../content/texts";
 
 import "./Login.css";
 
+// Login / Signup -sivu
+// Lomaketilan hallinta custom hookilla
 const Login = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
@@ -28,6 +30,7 @@ const Login = () => {
     false,
   );
 
+  // Vaihtaa login /  signup -tilan ja säätää lomakekenttiä
   const switchModeHandler = () => {
     if (!isLoginMode) {
       setFormData(
@@ -51,10 +54,12 @@ const Login = () => {
 
     const base = import.meta.env.VITE_BACKEND_URL;
 
+    // Valitaan endpoint tilan mukaan
     const url = isLoginMode
       ? `${base}/api/user/login`
       : `${base}/api/user/signup`;
 
+    // Rakennetaan lähetettävä data
     const payload = isLoginMode
       ? {
           email: formState.inputs.email.value,
@@ -74,7 +79,9 @@ const Login = () => {
         { "Content-Type": "application/json" },
       );
 
+      // Tallennetaan kirjautuminen contextiin
       auth.login(responseData.userId, responseData.token);
+      // Ohjataan käyttäjä etusivulle
       navigate("/home", { replace: true });
     } catch (err) {
       console.log(err);
@@ -130,11 +137,13 @@ const Login = () => {
             onInput={inputHandler}
           />
 
+          {/* Lähetä-painike, aktiivinen vain jos lomake validi */}
           <Button variant="edit" type="submit" disabled={!formState.isValid}>
             {isLoginMode ? "KIRJAUDU" : "REKISTERÖIDY"}
           </Button>
         </form>
 
+        {/* Vaihda login / signup */}
         <Button type="button" variant="ghost" onClick={switchModeHandler}>
           {isLoginMode ? "REKISTERÖIDY" : "KIRJAUDU"}
         </Button>
