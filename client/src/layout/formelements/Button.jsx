@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./Button.css";
 
+// Yleiskäyttöinen Button-komponentti
+// Voi toimia normaalina buttonina, React Router -linkkinä tai ankkurilinkkinä
 const Button = ({
   children,
   variant = "primary",
@@ -12,6 +14,7 @@ const Button = ({
   disabled = false,
   ...rest
 }) => {
+  // CSS-luokat variantin ja koon perusteella
   const classes = `btn btn--${variant} btn--${size} ${className}`.trim();
 
   if (href) {

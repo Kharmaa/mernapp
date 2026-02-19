@@ -8,7 +8,13 @@ const router = express.Router();
 router.post(
   "/signup",
   [
-    check("name").not().isEmpty(),
+    check("name")
+      .trim()
+      .not()
+      .isEmpty()
+      .matches(/^[^<>]*$/)
+      .withMessage("Nimi ei saa sisältää HTML-tageja"),
+
     check("email").normalizeEmail().isEmail(),
     check("password").isLength({ min: 6 }),
   ],

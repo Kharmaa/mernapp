@@ -7,6 +7,7 @@ import {
   dateToday,
 } from "../../utils/date";
 
+//Muotoilee päivämäärän suomenkieliseen pitkään muotoon
 function formatFiLong(date) {
   const weekday = new Intl.DateTimeFormat("fi-FI", { weekday: "long" }).format(
     date,
@@ -21,19 +22,25 @@ function formatFiLong(date) {
 
 const labels = ["Ma", "Ti", "Ke", "To", "Pe", "La", "Su"];
 
+// Viikkopaneeli näyttää valitun viikon päivät ja mahdolliset treenimerkinnät
 export default function WeekPanel({
   selectedDate,
   onSelectDate,
   workouts = [],
 }) {
+  // Määritetään tämän päivän ja valitun päivän tiedot
   const today = dateToday();
   const selectedISO = selectedDate || today;
   const selected = fromISODateLocal(selectedISO);
+
+  // Selvitetään viikon aloituspäivä ja viikkonumero
   const weekStart = startOfISOWeek(selected);
   const weekNumber = getISOWeekNumber(selected);
 
+  // Luodaan Set treenipäivistä nopeaa tarkistusta varten
   const workoutDates = new Set(workouts.map((w) => w.date));
 
+  // Rakennetaan viikon 7 päivää käyttöliittymää varten
   const weekDays = Array.from({ length: 7 }).map((_, i) => {
     const d = new Date(weekStart);
     d.setDate(weekStart.getDate() + i);
@@ -43,16 +50,18 @@ export default function WeekPanel({
       key: iso,
       label: labels[i],
       date: iso,
-      hasWorkout: workoutDates.has(iso),
+      hasWorkout: workoutDates.has(iso), // Onko tälle päivälle treeniä
     };
   });
 
+  // Siirtyy edelliseen viikkoon
   const goPrevWeek = () => {
     const d = new Date(weekStart);
     d.setDate(d.getDate() - 7);
     onSelectDate(toISODateLocal(d));
   };
 
+  // Siirtyy seuraavaan viikkoon
   const goNextWeek = () => {
     const d = new Date(weekStart);
     d.setDate(d.getDate() + 7);
